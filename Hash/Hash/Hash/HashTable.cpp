@@ -42,13 +42,7 @@ void HashTable::InsertData(string key)
 		m_HashTable[value] = newNode;
 	else
 	{
-		Node& node = m_HashTable[value];
-		while (node.next != nullptr)
-		{
-			node = *node.next;
-		}
-
-		node.next = &newNode;
+		//Todo
 	}
 }
 
