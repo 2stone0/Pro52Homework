@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <windows.h>
 #include <vector>
 
 #define SIZE 10000;
@@ -10,7 +11,7 @@ struct Node
 {
 	int Value=-1;
 	string Key;
-	Node* next;
+	Node* next=nullptr;
 };
 
 class HashTable

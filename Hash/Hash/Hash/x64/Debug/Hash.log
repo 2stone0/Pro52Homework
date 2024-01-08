@@ -1,8 +1,2 @@
-﻿  HashTable.cpp
-  maincpp.cpp
-C:\Users\SUNNY\OneDrive\바탕 화면\인재원\Hash\Hash\maincpp.cpp(21,6): error C2084: 'void LoadFile(HashTable &)' 함수에 이미 본문이 있습니다.
-C:\Users\SUNNY\OneDrive\바탕 화면\인재원\Hash\Hash\maincpp.cpp(7): message : 'LoadFile'의 이전 정의를 참조하십시오.
-C:\Users\SUNNY\OneDrive\바탕 화면\인재원\Hash\Hash\maincpp.cpp(37,2): error C2065: 'LoadFile': 선언되지 않은 식별자입니다.
-  Timer.cpp
-  코드를 생성하고 있습니다...
-C:\Users\SUNNY\OneDrive\바탕 화면\인재원\Hash\Hash\HashTable.cpp(7): error C4700: 초기화되지 않은 'value' 지역 변수를 사용했습니다.
+﻿  maincpp.cpp
+  Hash.vcxproj -> C:\Users\User\Desktop\git\Pro52Homework\Hash\Hash\x64\Debug\Hash.exe

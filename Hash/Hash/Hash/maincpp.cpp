@@ -1,8 +1,13 @@
 #include "HashTable.h"
+#include "Timer.h"
 
 #include <fstream>
+#include <unordered_map>
 
 using namespace std;
+
+
+std::unordered_map<std::string, int> hashMap;
 
 void LoadFile(HashTable& table)
 {
@@ -18,7 +23,7 @@ void LoadFile(HashTable& table)
 }
 
 // stl hash 쓰기
-void LoadFile(HashTable& table)
+void LoadFile()
 {
 	fstream file;
 	string word, t, q, filename;
@@ -26,7 +31,13 @@ void LoadFile(HashTable& table)
 	file.open(filename.c_str());
 	while (file >> word)
 	{
-		table.InsertData(word);
+		int value = 0;
+
+		for (char ch : word) {
+			value += static_cast<size_t>(ch);
+		}
+
+		hashMap[word] = value;
 	}
 	cout << "파일 로드 완료!" << endl;
 }
@@ -34,6 +45,28 @@ void LoadFile(HashTable& table)
 int main()
 {
 	HashTable myHash;
-	LoadFile(myHash);
+	Timer timer;
 
+	LoadFile(myHash);
+	LoadFile();
+	
+	timer.Start();
+	myHash.FindData("scytheman");
+	timer.End();
+
+	timer.GetElaspedTime();
+
+	timer.Start();
+	std::string key = "scytheman";
+	if (hashMap.find(key) != hashMap.end()) {
+		std::cout << "찾은 데이터 : " << key << std::endl;
+	}
+	else {
+		std::cout << "데이터가 없습니다." << std::endl;
+	}
+	timer.End();
+
+	timer.GetElaspedTime();
+
+	return 0;
 }

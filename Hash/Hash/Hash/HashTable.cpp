@@ -2,15 +2,22 @@
 
 int HashTable::HashFunction(string key)
 {
-	int value;
+	int value=0;
+	
+	for (char ch : key) {
+		value += static_cast<size_t>(ch);
+	}
 
-	return value;
+	return value-1;
 }
 
 
 void HashTable::FindData(string key)
 {
 	int value = HashFunction(key);
+
+	if (value == 712)
+		int a = 2;
 
 	Node& node = m_HashTable[value];
 	while (node.Key != key)
@@ -20,7 +27,7 @@ void HashTable::FindData(string key)
 		else
 		{
 			cout << "해당 데이터가 없습니다." << endl;
-			break;
+			return;
 		}
 	}
 
@@ -36,13 +43,23 @@ void HashTable::InsertData(string key)
 	newNode.Value = value;
 
 	if (value > m_Size) // 다시 확인
-		m_HashTable.reserve(value);
+	{
+		m_HashTable.resize(value+1);
+		m_Size = value + 1;
+	}
 
 	if (m_HashTable[value].Value == -1)
 		m_HashTable[value] = newNode;
 	else
 	{
 		//Todo
+		Node* move=new Node;
+		move->Key = m_HashTable[value].Key;
+		move->Value = m_HashTable[value].Value;
+		move->next = m_HashTable[value].next;
+
+		m_HashTable[value] = newNode;
+		m_HashTable[value].next = move;
 	}
 }
 
